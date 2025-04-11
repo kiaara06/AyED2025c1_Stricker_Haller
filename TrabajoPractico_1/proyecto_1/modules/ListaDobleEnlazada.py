@@ -2,10 +2,14 @@ from modules.NodoLDE import NodoLDE
 class ListaDobleEnlazada:
     def __init__(self):
         self.__cabeza = None
+        self.__cola = None
     
     @property
     def cabeza(self):
         return self.__cabeza
+    @property
+    def cola(self):
+        return self.__cola
 
     def estaVacia(self):
 
@@ -37,11 +41,11 @@ class ListaDobleEnlazada:
         dato = NodoLDE(item)
         if self.__cabeza is None:
             self.__cabeza = dato
-            return self
+            self.__cola = dato
         else:
             dato.siguiente = self.__cabeza
+            self.cabeza.anterior = dato
             self.__cabeza = dato
-            return self
     
     def agregar_al_final(self,item):
 
@@ -49,18 +53,15 @@ class ListaDobleEnlazada:
 
         actual = self.__cabeza
         dato = NodoLDE(item)
-
         if actual is None:
             self.__cabeza = dato
-            return self
+            self.__cola = dato
         elif actual.siguiente is None:
             actual.siguiente = dato
-            return self
+            self.__cola = dato
         else:
-            while actual.siguiente is not None:
-                actual = actual.siguiente
-            actual.siguiente = dato
-            return self
+            dato.anterior = self.__cola
+            self.__cola = dato 
  
     def insertar(self,item,posicion):
 
@@ -70,7 +71,8 @@ class ListaDobleEnlazada:
             raise ValueError("La posición debe ser mayor o igual a 0")
         elif posicion == 0:
             self.agregar_al_inicio(item)
-            return self
+        elif posicion == (len(self)-1):
+            self.agregar_al_final(item)
         else:
             dato = NodoLDE(item)
             actual = self.__cabeza
@@ -142,17 +144,14 @@ class ListaDobleEnlazada:
         
         """Invierte el orden de los elementos de la lista"""
 
-        actual = self.__cabeza
-        previo = None
         if actual is None:
             return "La lista está vacia"
         else:
+            actual = self.__cabeza
+            self.__cabeza, self.__cola = self.__cola, self.__cabeza
             while actual is not None:
-                siguiente = actual.siguiente
-                actual.siguiente = previo
-                previo = actual
-                actual = siguiente
-            self.__cabeza = previo
+                actual.siguiente, actual.anterior = actual.anterior, actual.siguiente
+                actual = actual.anterior
             return self
 
     def concatenar(self,ListaDE):
@@ -161,39 +160,25 @@ class ListaDobleEnlazada:
 
         if isinstance(ListaDE,ListaDobleEnlazada): 
             actual = self.__cabeza
-            cabeza_segunda = ListaDE.cabeza
             if actual is None:
-                self.__cabeza = cabeza_segunda
-                return self
-            elif actual.siguiente is None:
-                actual.siguiente = cabeza_segunda
+                self.__cabeza = ListaDE.cabeza
+                self.__cola = ListaDE.cola
                 return self
             else:
-                while actual.siguiente is not None:
-                    actual = actual.siguiente
-                actual.siguiente = cabeza_segunda
+                self.cola.siguiente = ListaDE.cabeza
+                ListaDE.cabeza.anterior = self.__cola
+                self.__cola = ListaDE.cola
                 return self
         else:
             raise TypeError("El parámetro debe ser un objeto ListaDobleEnlazada")
-
 
     def __add__(self,ListaDE):
 
         """Retorna una nueva lista concatenando la existente y una nueva"""
 
-        if isinstance(ListaDE,ListaDobleEnlazada): 
-            actual = self.__cabeza
-            cabeza_segunda = ListaDE.cabeza
-            if actual is None:
-                self.__cabeza = cabeza_segunda
-                return self
-            elif actual.siguiente is None:
-                actual.siguiente = cabeza_segunda
-                return self
-            else:
-                while actual.siguiente is not None:
-                    actual = actual.siguiente
-                actual.siguiente = cabeza_segunda
-                return self
+        if isinstance(ListaDE, ListaDobleEnlazada):
+            nueva_lista = self.copiar()
+            nueva_lista.concatenar(ListaDE)
+            return nueva_lista
         else:
             raise TypeError("El parámetro debe ser un objeto ListaDobleEnlazada")
