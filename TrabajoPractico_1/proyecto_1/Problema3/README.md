@@ -1,25 +1,27 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Implementación del juego de cartas "Guerra"
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Este es un script en el que se implementa un TAD Lista Doble Enlazada, el cual contiene Nodos LDE, y con el cual se desarrolla una clase Mazo, que contiene Cartas. Además, se realiza una implementación de la clase Mazo para llevar a cabo el juego Guerra.
 
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
+El problema está organizado de la siguiente forma:
+   En la carpeta [modules](./modules) se hallan disponibles los algoritmos de las clases NodoLDE, ListaDobleEnlazada, Mazo, Carta y JuegoGuerra.
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
+   Los test proporcionados por la cátedra de las clases Mazo y juego Guerra se hallan disponibles en la carpeta [test](./test)
 
-El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+   El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+
 
 ---
 ## 📑Dependencias
 
 1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
+2. **random**
+3. **unittest**
+
 
 ---
 ## 🚀Cómo Ejecutar el Proyecto
@@ -36,9 +38,5 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 ## 🙎‍♀️🙎‍♂️Autores
 
-- Apellido y Nombre del primer integrante
-- Apellido y Nombre del primer integrante
-
----
-
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
+- Stricker Kiara 
+- Haller Valeria A.

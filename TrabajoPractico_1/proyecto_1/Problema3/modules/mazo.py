@@ -33,18 +33,3 @@ class Mazo(ListaDobleEnlazada):
             return carta_extraida
 
 
-    
-    def mostrar_elementos(self):
-        elementos = []
-        actual = self.cabeza
-        while actual is not None:
-            elementos.append(actual.dato)
-            actual = actual.siguiente
-        return elementos
-
-    
-    
-c1 = Mazo()
-carta1 = Carta("10","♣")
-c1.poner_carta_arriba(carta1)
-print(c1.sacar_carta_arriba(mostrar=True))

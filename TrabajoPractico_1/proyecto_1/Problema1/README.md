@@ -1,25 +1,30 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Implementación de algoritmos de ordenamiento
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Este es un script en el que se comparan algoritmos de ordenamiento. Permite comparar los tiempos de ejecución de los métodos de ordenamiento Burbuja, QuickSort y Radix Sort.
 
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
+El problema está organizado de la siguiente forma:
+   En la carpeta [modules](./modules) se hallan disponibles los algoritmos de los respectivos métodos de ordenamiento.
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
+   En la carpeta [apps](./apps) se encuentra el algoritmo que compara los tiempos de ejecución de los 3 métodos de ordenamiento, con listas de distintos tamaños (1,100,200,300,400,500,600,700,800,900 y 1000 elementos)
 
-El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+   La gráfica de los resultados está disponible en la carpeta [data](./data) del proyecto.
+
+   El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+
 
 ---
 ## 📑Dependencias
 
 1. **Python 3.x**
 2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
+3. **time**
+4. **random**
+
 
 ---
 ## 🚀Cómo Ejecutar el Proyecto
@@ -36,9 +41,5 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 ## 🙎‍♀️🙎‍♂️Autores
 
-- Apellido y Nombre del primer integrante
-- Apellido y Nombre del primer integrante
-
----
-
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
+- Stricker Kiara 
+- Haller Valeria A.
