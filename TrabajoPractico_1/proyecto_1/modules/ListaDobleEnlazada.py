@@ -1,184 +1,214 @@
 from modules.NodoLDE import NodoLDE
+
 class ListaDobleEnlazada:
     def __init__(self):
         self.__cabeza = None
         self.__cola = None
-    
+        self.__tamanio = 0
+
     @property
     def cabeza(self):
         return self.__cabeza
     @property
     def cola(self):
         return self.__cola
+    @property
+    def tamanio(self):
+        return self.__tamanio
 
     def estaVacia(self):
-
         """Verifica si la lista tiene elementos"""
+        return self.__cabeza is None
 
-        vacia = False
-        if self.__cabeza is None:
-            vacia = True
-        return vacia
-    
     def __len__(self):
-
         """Devuelve el tamaño de la lista"""
+        return self.__tamanio
 
-        actual = self.__cabeza
-        contador = 0
-        while actual is not None:
-            contador = contador +1
-            actual = actual.siguiente
-        if contador == 0:
-            return "La lista está vacia"
-        else:
-            return contador
-    
-    def agregar_al_inicio(self,item):
-
+    def agregar_al_inicio(self, item):
         """Agrega un elemento al principio de la lista"""
-
-        dato = NodoLDE(item)
+        nuevo_nodo = NodoLDE(item)
         if self.__cabeza is None:
-            self.__cabeza = dato
-            self.__cola = dato
+            self.__cabeza = nuevo_nodo
+            self.__cola = nuevo_nodo
         else:
-            dato.siguiente = self.__cabeza
-            self.cabeza.anterior = dato
-            self.__cabeza = dato
-    
-    def agregar_al_final(self,item):
+            nuevo_nodo.anterior = None
+            nuevo_nodo.siguiente = self.__cabeza
+            self.__cabeza.anterior = nuevo_nodo
+            self.__cabeza = nuevo_nodo
+        self.__tamanio += 1
 
+    def agregar_al_final(self, item):
         """Agrega un elemento al final de la lista"""
-
-        actual = self.__cabeza
-        dato = NodoLDE(item)
-        if actual is None:
-            self.__cabeza = dato
-            self.__cola = dato
-        elif actual.siguiente is None:
-            actual.siguiente = dato
-            self.__cola = dato
+        nuevo_nodo = NodoLDE(item)
+        if self.__cabeza is None:
+            self.__cabeza = nuevo_nodo
+            self.__cola = nuevo_nodo
         else:
-            dato.anterior = self.__cola
-            self.__cola = dato 
- 
-    def insertar(self,item,posicion):
+            nuevo_nodo.anterior = self.__cola
+            self.__cola.siguiente = nuevo_nodo
+            self.__cola = nuevo_nodo
+        self.__tamanio += 1
 
+    def insertar(self, item, posicion):
         """Inserta un dato en una determinada posicion"""
-
-        if posicion <0:
-            raise ValueError("La posición debe ser mayor o igual a 0")
+        if posicion < 0:
+            raise IndexError("La posición está fuera de rango")
         elif posicion == 0:
             self.agregar_al_inicio(item)
-        elif posicion == (len(self)-1):
+        elif posicion >= self.__tamanio:
             self.agregar_al_final(item)
         else:
-            dato = NodoLDE(item)
+            nuevo_nodo = NodoLDE(item)
             actual = self.__cabeza
-            previo = None
             contador = 0
-            while actual is not None and contador != posicion:
-                previo = actual
+            while contador < posicion - 1:
                 actual = actual.siguiente
-                contador = contador+1
-            if contador == posicion:
-                dato.anterior = previo
-                dato.siguiente = actual
-                return self
-            elif actual is None:
-                if previo is None:
-                    raise ValueError("La lista está vacia. No existe la posicion pedida")
-                else:
-                    dato.anterior = previo
-                    return "La posicion no existe. Se agregó al final de la lista"
+                contador += 1
+            nuevo_nodo.siguiente = actual.siguiente
+            nuevo_nodo.anterior = actual
+            actual.siguiente.anterior = nuevo_nodo
+            actual.siguiente = nuevo_nodo
+            self.__tamanio += 1
 
-    def extraer(self,posicion):
-        
+    def extraer(self, posicion=None):
         """Retorna el item ubicado en dicha posicion"""
-
-        if posicion <0:
-            raise ValueError("La posicion debe ser mayor o igual a 0")
-        else: 
-            actual = self.__cabeza
-            previo = None
-            contador = 0
-            if actual is None:
-                return "La lista está vacia"
-            elif contador == posicion:
-                    item = actual.dato
-                    self.__cabeza = actual.siguiente
-                    return item
+            
+        if posicion == None: 
+            if self.__cola is None:
+                raise IndexError("La lista está vacía")
+            item = self.__cola.dato
+            self.__cola = self.__cola.anterior
+            if self.__cola is not None:
+                self.__cola.siguiente = None
             else:
-                encontrado = False
-                while actual is not None and not encontrado:
-                    if contador == posicion:
-                        encontrado = True
-                    else:
-                        previo = actual
-                        actual = actual.siguiente
-                        contador = contador +1
-                if encontrado:
-                    item = actual.dato
-                    previo.siguiente = actual.siguiente
-                    return item
-                else:
-                    item = previo.dato
-                    previo.anterior.siguiente = None
-                    return item
-    
-    def copiar(self):
+                self.__cabeza = None
+            self.__tamanio -= 1
+            return item
         
+        elif posicion < 0:
+            posicion = self.__tamanio + posicion
+            if posicion < 0:
+                raise IndexError("La posición está fuera de rango")
+            elif posicion == 0:
+                if self.__cabeza is None:
+                    raise IndexError("La lista está vacía")
+                item = self.__cabeza.dato
+                self.__cabeza = self.__cabeza.siguiente
+                if self.__cabeza is not None:
+                    self.__cabeza.anterior = None
+                else:
+                    self.__cola = None
+                self.__tamanio -= 1
+                return item
+            elif posicion >= (self.__tamanio - 1):
+                if self.__cola is None:
+                    raise IndexError("La lista está vacía")
+                item = self.__cola.dato
+                self.__cola = self.__cola.anterior
+                if self.__cola is not None:
+                    self.__cola.siguiente = None
+                else:
+                    self.__cabeza = None
+                self.__tamanio -= 1
+                return item
+            else: 
+                actual = self.__cabeza
+                contador = 0
+                while contador < posicion:
+                    actual = actual.siguiente
+                    contador += 1
+                    
+                item = actual.dato
+                actual.anterior.siguiente = actual.siguiente
+                actual.siguiente.anterior = actual.anterior
+                self.__tamanio -= 1
+                return item
+        else:
+            if posicion == 0:
+                if self.__cabeza is None:
+                    raise IndexError("La lista está vacía")
+                item = self.__cabeza.dato
+                self.__cabeza = self.__cabeza.siguiente
+                if self.__cabeza is not None:
+                    self.__cabeza.anterior = None
+                else:
+                    self.__cola = None
+                self.__tamanio -= 1
+                return item
+            elif posicion >= (self.__tamanio - 1):
+                if self.__cola is None:
+                    raise IndexError("La lista está vacía")
+                item = self.__cola.dato
+                self.__cola = self.__cola.anterior
+                if self.__cola is not None:
+                    self.__cola.siguiente = None
+                else:
+                    self.__cabeza = None
+                self.__tamanio -= 1
+                return item
+            else: 
+                actual = self.__cabeza
+                contador = 0
+                while contador < posicion:
+                    actual = actual.siguiente
+                    contador += 1
+                item = actual.dato
+                actual.anterior.siguiente = actual.siguiente
+                actual.siguiente.anterior = actual.anterior
+                self.__tamanio -= 1
+                return item
+
+
+    def copiar(self):
         """Crea otro objeto ListaDobleEnlazada igual al existente"""
-
-        actual = self.__cabeza
         lista_copia = ListaDobleEnlazada()
-
+        actual = self.__cabeza
         while actual is not None:
-            nuevo_actual = actual.dato
-            lista_copia.agregar_al_final(nuevo_actual)
+            lista_copia.agregar_al_final(actual.dato)
             actual = actual.siguiente
         return lista_copia
 
     def invertir(self):
-        
         """Invierte el orden de los elementos de la lista"""
-
-        if actual is None:
-            return "La lista está vacia"
-        else:
-            actual = self.__cabeza
-            self.__cabeza, self.__cola = self.__cola, self.__cabeza
-            while actual is not None:
-                actual.siguiente, actual.anterior = actual.anterior, actual.siguiente
-                actual = actual.anterior
+        if self.__tamanio <= 1:
             return self
+        actual = self.__cabeza
+        self.__cabeza, self.__cola = self.__cola, self.__cabeza
+        while actual is not None:
+            actual.siguiente, actual.anterior = actual.anterior, actual.siguiente
+            actual = actual.anterior
+        return self
 
-    def concatenar(self,ListaDE):
+    def concatenar(self, ListaDE):
 
         """Concatena una segunda ListaDobleEnlazada al final de la primera"""
 
-        if isinstance(ListaDE,ListaDobleEnlazada): 
-            actual = self.__cabeza
-            if actual is None:
-                self.__cabeza = ListaDE.cabeza
-                self.__cola = ListaDE.cola
-                return self
-            else:
-                self.cola.siguiente = ListaDE.cabeza
-                ListaDE.cabeza.anterior = self.__cola
-                self.__cola = ListaDE.cola
-                return self
-        else:
+        if not isinstance(ListaDE, ListaDobleEnlazada):
             raise TypeError("El parámetro debe ser un objeto ListaDobleEnlazada")
+        if ListaDE.estaVacia():
+            return self
+        if self.estaVacia():
+            self.__cabeza = ListaDE.__cabeza
+            self.__cola = ListaDE.__cola
+        else:
+            self.__cola.siguiente = ListaDE.__cabeza
+            self.__cola = ListaDE.__cola
+        self.__tamanio += len(ListaDE)
+        return self
 
-    def __add__(self,ListaDE):
-
+    def __add__(self, otra_lista):
         """Retorna una nueva lista concatenando la existente y una nueva"""
-
-        if isinstance(ListaDE, ListaDobleEnlazada):
-            nueva_lista = self.copiar()
-            nueva_lista.concatenar(ListaDE)
-            return nueva_lista
-        else:
+        if not isinstance(otra_lista, ListaDobleEnlazada):
             raise TypeError("El parámetro debe ser un objeto ListaDobleEnlazada")
+        nueva_lista = self.copiar()
+        nueva_lista.concatenar(otra_lista)
+        return nueva_lista
+
+    def __iter__(self):
+            """Permite iterar sobre los elementos de la lista """
+            elementos = []
+            actual = self.__cabeza
+            while actual is not None:
+                elementos.append(actual.dato)
+                actual = actual.siguiente
+            return iter(elementos)
