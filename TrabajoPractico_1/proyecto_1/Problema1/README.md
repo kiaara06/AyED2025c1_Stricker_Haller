@@ -2,7 +2,7 @@
 
 Breve descripción del proyecto:
 
-Este es un script en el que se comparan algoritmos de ordenamiento. Permite comparar los tiempos de ejecución de los métodos de ordenamiento Burbuja, QuickSort y Radix Sort.
+Este es un script en el que se comparan algoritmos de ordenamiento. Permite comparar los tiempos de ejecución de los métodos de ordenamiento Burbuja, QuickSort y Radix Sort. Además, se hace una comparación extra con la funcion sorted() de python. 
 
 ---
 ## 🏗Arquitectura General
@@ -10,9 +10,9 @@ Este es un script en el que se comparan algoritmos de ordenamiento. Permite comp
 El problema está organizado de la siguiente forma:
    En la carpeta [modules](./modules) se hallan disponibles los algoritmos de los respectivos métodos de ordenamiento.
 
-   En la carpeta [apps](./apps) se encuentra el algoritmo que compara los tiempos de ejecución de los 3 métodos de ordenamiento, con listas de distintos tamaños (1,100,200,300,400,500,600,700,800,900 y 1000 elementos)
+   En la carpeta [apps](./apps) se encuentra el algoritmo que compara los tiempos de ejecución de los 3 métodos de ordenamiento, con listas de distintos tamaños (1,100,200,300,400,500,600,700,800,900 y 1000 elementos). También se encuentran los algoritmos para comprobar el funcionamiento de los ordenamientos, y la comparación con sorted()
 
-   La gráfica de los resultados está disponible en la carpeta [data](./data) del proyecto.
+   Las gráficas de los resultados están disponibles en la carpeta [data](./data) del proyecto.
 
    El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 
