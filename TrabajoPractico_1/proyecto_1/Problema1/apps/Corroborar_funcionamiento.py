@@ -1,7 +1,7 @@
 import random
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+#import sys
+#import os
+#sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from modules.Ordenamiento_Burbuja import ordenamiento_Burbuja
 from modules.Ordenamiento_Quicksort import ordenamiento_Quicksort
 from modules.Ordenamiento_Residual import ordenamiento_Residual
