@@ -1,0 +1,12 @@
+A partir del código creado, podemos deducir que:
+
+    El método "len" es el que se ejecuta con mayor rapidez, teniendo un orden de complejidad 
+        constante (O(1)).
+
+    El método "invertir" se ejecuta más lento que el método len, pero mas rápido que el método 
+        copiar. Su orden de complejidad es O(n^2), ya que observamos un comportamiento cuadrático.
+
+    Por último, el método "copiar" es el que se ejecuta más lento. Más allá de tener orden de complejidad 
+        O(n^2) como el método "invertir", por razones internas del código, independientemente del tamaño de las listas, siempre será el que más tarde.
+
+    
