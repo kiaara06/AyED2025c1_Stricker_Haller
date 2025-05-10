@@ -3,24 +3,29 @@ class MonticuloBinario:
         self.__lista = [None]
         self.__tamanio = 0
         if tipo_de_monticulo == "min" or tipo_de_monticulo == "max": 
-            self.__tipo = tipo_de_monticulo
+            self.__tipo = tipo_de_monticulo.lower()
         else:
             raise ValueError("Debe ingresa por tipo, maxima o minimo")
-    
-    def mostrar_monticulo(self):
-        return self.__lista
     
     @property
     def tamanio(self): 
         return self.__tamanio
     
+
+    def mostrar_monticulo(self):
+        if self.tamanio == 0:
+            return 
+        else:
+            return self.__lista
+    
+
     def insertar(self,clave):
-        if self.__tipo.lower() == "min": 
+        if self.__tipo == "min": 
             self.__lista.append(clave)
             self.__tamanio += 1
             self.infiltrarArriba(self.__tamanio)
         
-        elif self.__tipo.lower() == "max": 
+        elif self.__tipo == "max": 
             self.__lista.append(clave)
             self.__tamanio += 1
             self.infiltrarArriba(self.__tamanio)

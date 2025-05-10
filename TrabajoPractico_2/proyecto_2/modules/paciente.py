@@ -62,11 +62,3 @@ if __name__ == "__main__":
     print(p1.riesgo,p2.riesgo)
     if p1<p2:
         print("funciona")
-#lista_pacientes = []   
-#for i in range(4):     
-    #h = Paciente()
-    #lista_pacientes.append(h)
-
-#for paciente in lista_pacientes:
-    #print(str(paciente))
-        
