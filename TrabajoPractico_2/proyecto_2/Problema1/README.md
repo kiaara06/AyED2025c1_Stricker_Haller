@@ -1,15 +1,14 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Sala de espera 
 
-Breve descripción del proyecto:
-
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
-
+Este es un script en que se implementan un Monticulo Binario, una Cola de Prioridad, objetos tipo Paciente, y una Sala de Espera (objeto Cola de prioridad), proporcionado por la cátedra.
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
+El problema está organizado de la siguiente forma:
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
+En la carpeta [modules](./modules) se hallan disponibles los código de la Cola de prioridad, el Monticulo Binario, y Paciente;
+
+En la carpeta [apps](./apps) del proyectose encuentra la aplicación Sala de Espera, que las clases creadas, lo cual verifica su funcionamiento.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 
@@ -17,9 +16,9 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ## 📑Dependencias
 
 1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
+2. **time** 
+3. **Random**
+
 
 ---
 ## 🚀Cómo Ejecutar el Proyecto
@@ -36,9 +35,7 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 ## 🙎‍♀️🙎‍♂️Autores
 
-- Apellido y Nombre del primer integrante
-- Apellido y Nombre del primer integrante
+- Stricker, Kiara
+- Haller, Valeria A.
 
 ---
-
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.

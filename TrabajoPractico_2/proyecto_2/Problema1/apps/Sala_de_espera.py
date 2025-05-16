@@ -26,7 +26,7 @@ for i in range(n):
         # se atiende paciente que se encuentra al frente de la cola
         paciente_atendido = cola_de_espera.avanzar()
         print('*'*40)
-        print('Se atiende el paciente:', paciente_atendido)
+        print('Se atiende el paciente:', paciente_atendido, 'Llegada:', paciente.llegada)
         print('*'*40)
     else:
         # se continúa atendiendo paciente de ciclo anterior
@@ -37,7 +37,8 @@ for i in range(n):
     # Se muestran los pacientes restantes en la cola de espera
     print('Pacientes que faltan atenderse:', len(cola_de_espera))
     for paciente in cola_de_espera:
-        print('\t', paciente)
+        if paciente != None:
+            print('\t', paciente, 'Llegada:', paciente.llegada)
     
     print()
     print('-*-'*15)
