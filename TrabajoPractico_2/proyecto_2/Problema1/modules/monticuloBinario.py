@@ -11,8 +11,14 @@ class MonticuloBinario:
     def tamanio(self): 
         return self.__tamanio
     
+    def __iter__(self):
+        return iter(self.__lista)
+    
 
     def mostrar_monticulo(self):
+
+        """Permite obtener la lista de nodos"""
+
         if self.tamanio == 0:
             return 
         else:
@@ -20,6 +26,9 @@ class MonticuloBinario:
     
 
     def insertar(self,clave):
+
+        """Inserta un nuevo nodo"""
+
         if self.__tipo == "min": 
             self.__lista.append(clave)
             self.__tamanio += 1
@@ -74,6 +83,9 @@ class MonticuloBinario:
             i = hijo_menor
 
     def eliminarRaiz(self):
+
+        """Elimina la raíz y la reemplaza manteniendo la correcta estructura"""
+
         if self.__tipo.lower() == "min":
             raiz = self.__lista[1]
             self.__lista[1] = self.__lista[self.__tamanio]
@@ -88,3 +100,40 @@ class MonticuloBinario:
             self.__lista.pop()
             self.infiltrarAbajo(1)
             return raiz
+        
+    def buscarRaiz(self):
+
+        """Devuelve la raíz del montículo"""
+
+        if self.estaVacio:
+            return f"EL montículo está vacío"
+
+        return self.__lista[1]
+    
+    def estaVacio(self):
+
+        """Devuelve True o False según el monticulo tenga o no aunque sea un nodo"""
+
+        if self.__tamanio == 0:
+            return True
+        return False
+    
+    def construirMonticulo(self,lista):
+
+        """Construye un monticulo a partir d euna lista de elementos"""
+
+        for i in lista: 
+            self.insertar(i)
+        
+    def buscar(self,clave):
+
+        """Devuelve True o False según se encuentre la clave en el montículo"""
+
+        if self.estaVacio:
+            return f"EL montículo está vacío"
+
+        for i in self.__lista:
+            if i == clave:
+                return True
+        else:
+            return False

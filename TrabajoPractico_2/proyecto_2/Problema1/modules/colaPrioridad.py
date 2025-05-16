@@ -1,5 +1,4 @@
-from monticuloBinario import MonticuloBinario
-from paciente import Paciente
+from modules.monticuloBinario import MonticuloBinario
    
 class ColaDePrioridad:
     def __init__(self):
@@ -14,4 +13,10 @@ class ColaDePrioridad:
     
     def avanzar(self):
         self.__cola.eliminarRaiz()
+    
+    def __len__(self):
+        return self.__cola.tamanio
+    
+    def __iter__(self):
+        return iter(self.__cola)
 
