@@ -1,25 +1,20 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍 Implementación de una base de datos Temperaturas_DB 
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Este es un script en el que se implementa una base de datos Temperaturas_DB, donde se almacenan mediciones de temperatura en °C en base a fechas de registro. Esta hace uso de un árbol AVL. 
 
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
+En la carpeta [modules](./modules) del proyecto se encuantran disponibles los códigos creados del ArbolAVL, y de la clase Temperaturas_DB.
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
-
-El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+El informe completo detallando el problema 2 se encuentra disponible en la carpeta [docs](./docs) del proyecto.
 
 ---
 ## 📑Dependencias
 
-1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
+1. **datetime**
 
 ---
 ## 🚀Cómo Ejecutar el Proyecto
@@ -36,9 +31,7 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 ## 🙎‍♀️🙎‍♂️Autores
 
-- Apellido y Nombre del primer integrante
-- Apellido y Nombre del primer integrante
+- Stricker, Kiara
+- Haller, Valeria A.
 
 ---
-
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
