@@ -1,46 +1,24 @@
-class MonticuloBinario: #ALTERACIONES EN LAS INFILTRACIONES
-    def __init__(self,tipo_de_monticulo):
-        self.__lista = [None]
-        self.__tamanio = 0
-        if tipo_de_monticulo == "min" or tipo_de_monticulo == "max": 
-            self.__tipo = tipo_de_monticulo.lower()
-        else:
-            raise ValueError("Debe ingresa por tipo, maxima o minimo")
-    
-    @property
-    def tamanio(self): 
-        return self.__tamanio
-    
-    def __iter__(self):
-        return iter(self.__lista)
-    
+from modules.monticuloBinario import MonticuloBinario
 
-    def mostrar_monticulo(self):
-
-        """Permite obtener la lista de nodos"""
-
-        if self.tamanio == 0:
-            return 
-        else:
-            return self.__lista
+class MonticuloBinarioPrim(MonticuloBinario):
+    def __init__(self):
+        super().__init__()
     
-
-    def insertar(self,tupla_clave_y_elemento): #cambio necesario (self,clave) a (self,tupla)
+    def insertar_prim(self,tupla_clave_y_elemento): #cambio necesario (self,clave) a (self,tupla)
 
         """Inserta un nuevo nodo"""
 
         if self.__tipo == "min": 
             self.__lista.append(tupla_clave_y_elemento)
             self.__tamanio += 1
-            self.infiltrarArriba(self.__tamanio)
+            self.infiltrarArriba_prim(self.__tamanio)
         
         elif self.__tipo == "max": 
             self.__lista.append(tupla_clave_y_elemento)
             self.__tamanio += 1
-            self.infiltrarArriba(self.__tamanio)
-
+            self.infiltrarArriba_prim(self.__tamanio)
     
-    def infiltrarArriba(self,i):
+    def infiltrarArriba_prim(self,i):
         while i // 2 > 0:
             if self.__tipo == "min":
                 #Se cambió if self.__lista[i] < self.__lista[i//2]:
@@ -59,7 +37,7 @@ class MonticuloBinario: #ALTERACIONES EN LAS INFILTRACIONES
                     self.__lista[i] = temp
                 i = i//2
 
-    def infiltrarAbajo(self,i):
+    def infiltrarAbajo_prim(self,i):
         while (i * 2) <= self.__tamanio:  
             hijo_menor = i * 2
             if (i * 2 + 1) <= self.__tamanio:  
@@ -91,40 +69,8 @@ class MonticuloBinario: #ALTERACIONES EN LAS INFILTRACIONES
                 else:
                     break
             i = hijo_menor
-
-    def eliminarRaiz(self):
-
-        """Elimina la raíz y la reemplaza manteniendo la correcta estructura"""
-
-        if self.estaVacio(): 
-            return None
-
-        raiz = self.__lista[1]
-        self.__lista[1] = self.__lista[self.__tamanio]
-        self.__tamanio -= 1
-        self.__lista.pop()
-        self.infiltrarAbajo(1)
-        return raiz
-
-        
-    def buscarRaiz(self):
-
-        """Devuelve la raíz del montículo"""
-
-        if self.estaVacio:
-            return f"EL montículo está vacío"
-
-        return self.__lista[1]
     
-    def estaVacio(self):
-
-        """Devuelve True o False según el monticulo tenga o no aunque sea un nodo"""
-
-        if self.__tamanio == 0:
-            return True
-        return False
-    
-    def construirMonticulo(self,lista_de_tuplas): 
+    def construirMonticulo_prim(self,lista_de_tuplas): 
         """
         Construye un montículo a partir de una lista de elementos (prioridad, item).
         Utiliza el algoritmo de heapify para construir el montículo de forma eficiente.
@@ -136,10 +82,10 @@ class MonticuloBinario: #ALTERACIONES EN LAS INFILTRACIONES
         #empieza en el ultimo padre
         i = self.__tamanio // 2
         while i > 0:
-            self.infiltrarAbajo(i)
+            self.infiltrarAbajo_prim(i)
             i -= 1
-
-    def buscar(self,elemento):
+    
+    def buscar_prim(self,elemento):
         if self.estaVacio():
             return "EL montículo está vacío"
 
@@ -167,12 +113,12 @@ class MonticuloBinario: #ALTERACIONES EN LAS INFILTRACIONES
 
         if self.__tipo == "min":
             if nueva_prioridad < prioridad_actual:
-                self.infiltrarArriba(indice)
+                self.infiltrarArriba_prim(indice)
             elif nueva_prioridad > prioridad_actual:
-                self.infiltrarAbajo(indice)
+                self.infiltrarAbajo_prim(indice)
                 
         elif self.__tipo == "max":
             if nueva_prioridad > prioridad_actual:
-                self.infiltrarArriba(indice)
+                self.infiltrarArriba_prim(indice)
             elif nueva_prioridad < prioridad_actual:
-                self.infiltrarAbajo(indice)
+                self.infiltrarAbajo_prim(indice)

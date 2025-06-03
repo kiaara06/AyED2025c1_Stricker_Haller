@@ -1,16 +1,16 @@
-from modules.ColaPrioridad_alterado import ColaDePrioridad
+from modules.colaDePrioridadPrim import ColaDePrioridadPrim
 from modules.Grafo import Grafo,Vertice
 import sys
 
 def prim(G,v_inicio):
     mejor_ruta = []
-    cp = ColaDePrioridad()
+    cp = ColaDePrioridadPrim()
     for v in G:
         v.asignarDistancia(sys.maxsize)
         v.asignarPredecesor(None)
 
     v_inicio.asignarDistancia(0)
-    cp.cola.construirMonticulo([(v.obtenerDistancia(),v) for v in G])
+    cp.cola.construirMonticulo_prim([(v.obtenerDistancia(),v) for v in G])
     while not cp.estaVacia():
         tupla_verticeActual = cp.avanzar()
         verticeActual = tupla_verticeActual[1]

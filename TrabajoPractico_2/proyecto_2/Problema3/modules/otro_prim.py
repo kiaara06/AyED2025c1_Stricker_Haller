@@ -1,10 +1,10 @@
-from modules.ColaPrioridad_alterado import ColaDePrioridad
+from modules.colaDePrioridadPrim import ColaDePrioridadPrim
 from modules.Grafo import Grafo, Vertice
 import sys
 
 def prim2(G,v_inicio):
     mejor_ruta = []
-    cp = ColaDePrioridad()
+    cp = ColaDePrioridadPrim()
     for v in G:
         v.asignarDistancia(sys.maxsize)
         v.asignarPredecesor(None)
@@ -14,7 +14,7 @@ def prim2(G,v_inicio):
     for v in G:
         id_vertices.append((v.obtenerDistancia(), v))
 
-    cp.cola.construirMonticulo(id_vertices)
+    cp.cola.construirMonticulo_prim(id_vertices)
     vertices_en_mst = set() #rastrea nodos visitados
 
     while not cp.estaVacia():

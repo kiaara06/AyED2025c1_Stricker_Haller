@@ -1,8 +1,8 @@
-from modules.monticuloBinario_alterado import MonticuloBinario
+from modules.monticuloBinarioPrim import MonticuloBinarioPrim
    
-class ColaDePrioridad:
+class ColaDePrioridadPrim:
     def __init__(self):
-        self.__cola = MonticuloBinario("min")
+        self.__cola = MonticuloBinarioPrim("min")
 
     @property
     def cola(self):
