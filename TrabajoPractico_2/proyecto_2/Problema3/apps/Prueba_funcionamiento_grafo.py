@@ -1,5 +1,5 @@
 #Probamos el correcto funcionamiento de las clases Vertice y Grafo
-from modules.Grafo import Vertice,Grafo
+from modules.grafo import Vertice,Grafo
 
 g = Grafo()
 

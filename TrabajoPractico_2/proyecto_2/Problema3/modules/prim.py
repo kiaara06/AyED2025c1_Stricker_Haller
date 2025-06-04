@@ -1,8 +1,8 @@
 from modules.colaDePrioridadPrim import ColaDePrioridadPrim
-from modules.Grafo import Grafo, Vertice
+from modules.grafo import Grafo, Vertice
 import sys
 
-def prim2(G,v_inicio):
+def prim(G,v_inicio):
     mejor_ruta = []
     cp = ColaDePrioridadPrim()
     for v in G:

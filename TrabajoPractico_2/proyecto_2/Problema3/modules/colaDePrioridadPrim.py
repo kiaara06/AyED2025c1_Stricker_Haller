@@ -1,6 +1,9 @@
 from modules.monticuloBinarioPrim import MonticuloBinarioPrim
    
 class ColaDePrioridadPrim:
+    """
+    Una ColaDePrioridad que hace uso del MonticuloBinario hijo
+    """
     def __init__(self):
         self.__cola = MonticuloBinarioPrim("min")
 

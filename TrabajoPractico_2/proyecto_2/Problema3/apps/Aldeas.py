@@ -1,5 +1,5 @@
-from modules.Grafo import Vertice,Grafo
-from modules.otro_prim import prim2
+from modules.grafo import Vertice,Grafo
+from modules.prim import prim
 import sys
 import os
 
@@ -25,5 +25,6 @@ vertice_inicio = grafo_aldeas.obtenerVertice("Peligros")
 if not vertice_inicio:
     print("Error: La aldea 'Peligros' no se encontró en el grafo.")
 
-Mejor_ruta = prim2(grafo_aldeas,vertice_inicio)
-print(Mejor_ruta)
+Mejor_ruta = prim(grafo_aldeas,vertice_inicio)
+for tupla in Mejor_ruta:
+    print(tupla)

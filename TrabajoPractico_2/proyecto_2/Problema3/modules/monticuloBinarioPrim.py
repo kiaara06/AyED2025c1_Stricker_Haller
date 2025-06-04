@@ -1,96 +1,101 @@
 from modules.monticuloBinario import MonticuloBinario
 
 class MonticuloBinarioPrim(MonticuloBinario):
-    def __init__(self):
-        super().__init__()
-    
+    """
+    Hijo de la clase MonticuloBinario, adaptado a cumplir las necesidades
+    del algorítomo prim
+    """
+    def __init__(self,tipo_de_monticulo):
+        super().__init__(tipo_de_monticulo)
+        self.__tipo = tipo_de_monticulo.lower()
+
     def insertar_prim(self,tupla_clave_y_elemento): #cambio necesario (self,clave) a (self,tupla)
-
-        """Inserta un nuevo nodo"""
-
-        if self.__tipo == "min": 
+        """
+        Inserta una tupla (clave,elemento)
+        """
+        if self.__tipo == "min":
             self.__lista.append(tupla_clave_y_elemento)
-            self.__tamanio += 1
-            self.infiltrarArriba_prim(self.__tamanio)
-        
-        elif self.__tipo == "max": 
+            self._MonticuloBinario__tamanio += 1 # Acceder a __tamanio del padre
+            self.infiltrarArriba_prim(self._MonticuloBinario__tamanio) # Acceder a __tamanio del padre
+
+        elif self.__tipo == "max":
             self.__lista.append(tupla_clave_y_elemento)
-            self.__tamanio += 1
-            self.infiltrarArriba_prim(self.__tamanio)
-    
+            self._MonticuloBinario__tamanio += 1 # Acceder a __tamanio del padre
+            self.infiltrarArriba_prim(self._MonticuloBinario__tamanio) # Acceder a __tamanio del padre
+
     def infiltrarArriba_prim(self,i):
         while i // 2 > 0:
             if self.__tipo == "min":
                 #Se cambió if self.__lista[i] < self.__lista[i//2]:
                 #Por if self.__lista[i][0] < self.__lista[i//2][0]:
-                if self.__lista[i][0]<self.__lista[i//2][0]:
-                    temp = self.__lista[i//2]
-                    self.__lista[i//2] = self.__lista[i]
-                    self.__lista[i] = temp
+                if self._MonticuloBinario__lista[i][0] < self._MonticuloBinario__lista[i//2][0]: # Acceder a __lista del padre
+                    temp = self._MonticuloBinario__lista[i//2] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[i//2] = self._MonticuloBinario__lista[i] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[i] = temp # Acceder a __lista del padre
                 i = i//2
             elif self.__tipo == "max":
                 #Se cambió if self.__lista[i] > self.__lista[i//2]:
                 #Por if self.__lista[i][0] > self.__lista[i//2][0]:
-                if self.__lista[i][0]>self.__lista[i//2][0]:
-                    temp = self.__lista[i//2]
-                    self.__lista[i//2] = self.__lista[i]
-                    self.__lista[i] = temp
+                if self._MonticuloBinario__lista[i][0] > self._MonticuloBinario__lista[i//2][0]: # Acceder a __lista del padre
+                    temp = self._MonticuloBinario__lista[i//2] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[i//2] = self._MonticuloBinario__lista[i] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[i] = temp # Acceder a __lista del padre
                 i = i//2
 
     def infiltrarAbajo_prim(self,i):
-        while (i * 2) <= self.__tamanio:  
+        while (i * 2) <= self._MonticuloBinario__tamanio: # Acceder a __tamanio del padre
             hijo_menor = i * 2
-            if (i * 2 + 1) <= self.__tamanio:  
+            if (i * 2 + 1) <= self._MonticuloBinario__tamanio: # Acceder a __tamanio del padre
                 if self.__tipo == "min":
                 #Se cambió if self.__lista[i * 2 + 1] < self.__lista[hijo_menor]:
                 #Por if self.__lista[i * 2 + 1][0] < self.__lista[hijo_menor][0]:
-                    if self.__lista[i * 2 + 1][0] < self.__lista[hijo_menor][0]:
+                    if self._MonticuloBinario__lista[i * 2 + 1][0] < self._MonticuloBinario__lista[hijo_menor][0]: # Acceder a __lista del padre
                         hijo_menor = i * 2 + 1
                 elif self.__tipo == "max":
-                    if self.__lista[i * 2 + 1][0] > self.__lista[hijo_menor][0]:
+                    if self._MonticuloBinario__lista[i * 2 + 1][0] > self._MonticuloBinario__lista[hijo_menor][0]: # Acceder a __lista del padre
                         hijo_menor = i * 2 + 1
 
             if self.__tipo == "min":
                 #Se cambió if self.__lista[i] > self.__lista[hijo_menor]:
                 #Por if self.__lista[i][0] > self.__lista[hijo_menor][0]:
-                if self.__lista[i][0] > self.__lista[hijo_menor][0]:
-                    temp = self.__lista[i]
-                    self.__lista[i] = self.__lista[hijo_menor]
-                    self.__lista[hijo_menor] = temp
+                if self._MonticuloBinario__lista[i][0] > self._MonticuloBinario__lista[hijo_menor][0]: # Acceder a __lista del padre
+                    temp = self._MonticuloBinario__lista[i] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[i] = self._MonticuloBinario__lista[hijo_menor] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[hijo_menor] = temp # Acceder a __lista del padre
                 else:
-                    break 
+                    break
             elif self.__tipo == "max":
                 #Se cambió if self.__lista[i] < self.__lista[hijo_menor][0]:
                 #Por if self.__lista[i][0] < self.__lista[hijo_menor][0]:
-                if self.__lista[i][0] < self.__lista[hijo_menor][0]:
-                    temp = self.__lista[i]
-                    self.__lista[i] = self.__lista[hijo_menor]
-                    self.__lista[hijo_menor] = temp
+                if self._MonticuloBinario__lista[i][0] < self._MonticuloBinario__lista[hijo_menor][0]: # Acceder a __lista del padre
+                    temp = self._MonticuloBinario__lista[i] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[i] = self._MonticuloBinario__lista[hijo_menor] # Acceder a __lista del padre
+                    self._MonticuloBinario__lista[hijo_menor] = temp # Acceder a __lista del padre
                 else:
                     break
             i = hijo_menor
-    
-    def construirMonticulo_prim(self,lista_de_tuplas): 
+
+    def construirMonticulo_prim(self,lista_de_tuplas):
         """
         Construye un montículo a partir de una lista de elementos (prioridad, item).
         Utiliza el algoritmo de heapify para construir el montículo de forma eficiente.
         """
-        self.__lista = [None] #resetea para arrancar de cero
-        self.__lista.extend(lista_de_tuplas) 
-        self.__tamanio = len(lista_de_tuplas)
+        self._MonticuloBinario__lista = [None] # Acceder a __lista del padre y resetear
+        self._MonticuloBinario__lista.extend(lista_de_tuplas) # Acceder a __lista del padre
+        self._MonticuloBinario__tamanio = len(lista_de_tuplas) # Acceder a __tamanio del padre
 
         #empieza en el ultimo padre
-        i = self.__tamanio // 2
+        i = self._MonticuloBinario__tamanio // 2 # Acceder a __tamanio del padre
         while i > 0:
             self.infiltrarAbajo_prim(i)
             i -= 1
-    
+
     def buscar_prim(self,elemento):
         if self.estaVacio():
             return "EL montículo está vacío"
 
-        for item_tuple in self.__lista[1:]:
-            if item_tuple[1] == elemento: 
+        for item_tuple in self._MonticuloBinario__lista[1:]: # Acceder a __lista del padre
+            if item_tuple[1] == elemento:
                 return True
         return False
 
@@ -99,24 +104,24 @@ class MonticuloBinarioPrim(MonticuloBinario):
             raise ValueError("El montículo está vacío. No se puede decrementar una clave.")
 
         indice = -1
-        for i in range(1, self.__tamanio + 1):
-            if self.__lista[i][1] == elemento_a_actualizar:
+        for i in range(1, self._MonticuloBinario__tamanio + 1): # Acceder a __tamanio del padre
+            if self._MonticuloBinario__lista[i][1] == elemento_a_actualizar: # Acceder a __lista del padre
                 indice = i
                 break
 
         if indice == -1:
             raise ValueError(f"El elemento '{elemento_a_actualizar}' no se encontró en el montículo.")
 
-        prioridad_actual = self.__lista[indice][0]
+        prioridad_actual = self._MonticuloBinario__lista[indice][0] # Acceder a __lista del padre
 
-        self.__lista[indice] = (nueva_prioridad, elemento_a_actualizar)
+        self._MonticuloBinario__lista[indice] = (nueva_prioridad, elemento_a_actualizar) # Acceder a __lista del padre
 
         if self.__tipo == "min":
             if nueva_prioridad < prioridad_actual:
                 self.infiltrarArriba_prim(indice)
             elif nueva_prioridad > prioridad_actual:
                 self.infiltrarAbajo_prim(indice)
-                
+
         elif self.__tipo == "max":
             if nueva_prioridad > prioridad_actual:
                 self.infiltrarArriba_prim(indice)
