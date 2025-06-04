@@ -3,7 +3,7 @@ from modules.monticuloBinario import MonticuloBinario
 class MonticuloBinarioPrim(MonticuloBinario):
     """
     Hijo de la clase MonticuloBinario, adaptado a cumplir las necesidades
-    del algorítomo prim
+    del algoritmo prim
     """
     def __init__(self,tipo_de_monticulo):
         super().__init__(tipo_de_monticulo)
@@ -68,7 +68,6 @@ class MonticuloBinarioPrim(MonticuloBinario):
     def construirMonticulo_prim(self,lista_de_tuplas):
         """
         Construye un montículo a partir de una lista de elementos (prioridad, item).
-        Utiliza el algoritmo de heapify para construir el montículo de forma eficiente.
         """
         self._MonticuloBinario__lista = [None] # Acceder a __lista del padre y resetear
         self._MonticuloBinario__lista.extend(lista_de_tuplas) # Acceder a __lista del padre
