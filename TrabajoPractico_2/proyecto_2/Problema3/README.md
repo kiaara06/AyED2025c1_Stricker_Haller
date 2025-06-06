@@ -1,25 +1,26 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Palomas mensajeras 
 
 Breve descripción del proyecto:
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Este es un script en el que se implementan una serie de algoritmos que permiten obtener la ruta mejor, 
+o de menor costo, para que las palomas mensajeras del problema envíen la noticia de la forma más eficiente.
+Entre los algoritmos empleados, se encuentran: 
+-- una clase Grafo, que almacena objetos de tipo Vertice. 
+-- el algorítmo prim, para el cual se diseñaron las clases ColaPrioridadPrim y MonticuloBinarioPrim, adaptadas a las necesidades del mismo.
 
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
+Las clases diseñadas y el algoritmo prim se encuentran en la carpeta [modules](./modules) del proyecto.
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
+Las pruebas del correcto funcionamiento del grafo, y el archivo con los entregables solicitados se encuentran en la carpeta [apps](./apps) del proyecto.
 
-El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+El informe donde se detalla lo desarrollado en el problema 3 se haya en la carpeta [docs](./docs)
 
 ---
 ## 📑Dependencias
 
 1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
 
 ---
 ## 🚀Cómo Ejecutar el Proyecto
@@ -36,9 +37,8 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 ## 🙎‍♀️🙎‍♂️Autores
 
-- Apellido y Nombre del primer integrante
-- Apellido y Nombre del primer integrante
+- Stricker, Kiara 
+- Haller, Valeria Alejandra
 
 ---
 
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
