@@ -7,7 +7,9 @@ Este es un script en el que se implementa una base de datos Temperaturas_DB, don
 ---
 ## 🏗Arquitectura General
 
-En la carpeta [modules](./modules) del proyecto se encuantran disponibles los códigos creados del ArbolAVL, y de la clase Temperaturas_DB.
+En la carpeta [modules](./modules) del proyecto se encuentran disponibles los códigos creados del ArbolAVL, y de la clase Temperaturas_DB.
+
+En la carpeta [apps](./apps) se haya disponible una prueba del funcionamiento de Temperaturas_DB
 
 El informe completo detallando el problema 2 se encuentra disponible en la carpeta [docs](./docs) del proyecto.
 
