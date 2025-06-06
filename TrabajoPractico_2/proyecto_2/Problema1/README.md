@@ -8,7 +8,7 @@ El problema está organizado de la siguiente forma:
 
 En la carpeta [modules](./modules) se hallan disponibles los código de la Cola de prioridad, el Monticulo Binario, y Paciente;
 
-En la carpeta [apps](./apps) del proyectose encuentra la aplicación Sala de Espera, que las clases creadas, lo cual verifica su funcionamiento.
+En la carpeta [apps](./apps) del proyecto se encuentra disponible la aplicación Sala de Espera, que hace uso de las clases creadas, lo cual verifica su funcionamiento.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 
