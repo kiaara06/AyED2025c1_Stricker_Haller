@@ -5,8 +5,8 @@ Breve descripción del proyecto:
 Este es un script en el que se implementan una serie de algoritmos que permiten obtener la ruta mejor, 
 o de menor costo, para que las palomas mensajeras del problema envíen la noticia de la forma más eficiente.
 Entre los algoritmos empleados, se encuentran: 
--- una clase Grafo, que almacena objetos de tipo Vertice. 
--- el algorítmo prim, para el cual se diseñaron las clases ColaPrioridadPrim y MonticuloBinarioPrim, adaptadas a las necesidades del mismo.
+- una clase Grafo, que almacena objetos de tipo Vertice. 
+- el algorítmo prim, para el cual se diseñaron las clases ColaPrioridadPrim y MonticuloBinarioPrim, adaptadas a las necesidades del mismo.
 
 ---
 ## 🏗Arquitectura General
