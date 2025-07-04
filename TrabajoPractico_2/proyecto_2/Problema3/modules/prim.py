@@ -1,5 +1,5 @@
 from modules.colaDePrioridadPrim import ColaDePrioridadPrim
-from modules.grafo import Grafo, Vertice
+from modules.Grafo import Grafo, Vertice
 import sys
 
 def prim(G,v_inicio):

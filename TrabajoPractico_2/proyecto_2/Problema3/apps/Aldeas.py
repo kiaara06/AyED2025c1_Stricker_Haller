@@ -1,4 +1,4 @@
-from modules.grafo import Vertice,Grafo
+from modules.Grafo import Vertice,Grafo
 from modules.prim import prim
 import sys
 import os
